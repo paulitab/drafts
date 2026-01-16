@@ -2,7 +2,7 @@
   {
     "rule_id": "",
     "name": "New Detection Rule",
-    "customer_id": "<cid>",
+    "customer_id": "",
     "owner": "",
     "rule_type": "detection",
     "lookup": "summary",

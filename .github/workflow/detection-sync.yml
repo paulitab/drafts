@@ -1,0 +1,37 @@
+name: Update Correlation Rules
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 * * * *"  # runs hourly
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Update rules
+        env:
+          FALCON_CLIENT_ID: ${{ secrets.FALCON_CLIENT_ID }}
+          FALCON_CLIENT_SECRET: ${{ secrets.FALCON_CLIENT_SECRET }}
+          FALCON_CLOUD: ${{ secrets.FALCON_CLOUD }}
+        run: |
+          python scripts/sync_detections.py
+
+      - name: Commit + push
+        run: |
+          git config --local user.email "bot@github.com"
+          git config --local user.name "GitHub Actions Bot"
+          git add rules/rules.json
+          git commit -m "Auto-sync: updated correlation rules" || echo "No changes"
+          git push

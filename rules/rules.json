@@ -1,6 +1,6 @@
 [
   {
-    "rule_id": "new-rule-123",
+    "rule_id": "",
     "name": "New Detection Rule",
     "customer_id": "<cid>",
     "owner": "",

@@ -3,14 +3,14 @@
     "rule_id": "new-rule-123",
     "name": "New Detection Rule",
     "customer_id": "<cid>",
-    "owner": "<your-query-here>",
+    "owner": "",
     "rule_type": "detection",
     "lookup": "summary",
     "operation": {
       "schedule": "* * * * *",
       "definition": "@every 1h"
     },
-    "created_on": "2025-02-18T22:30:16Z",
+    "created_on": "2024-02-18T22:30:16Z",
     "status": "active"
   }
 ]
